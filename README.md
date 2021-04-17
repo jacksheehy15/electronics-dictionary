@@ -1,45 +1,74 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Milestone Project 3 - Electronics Dictionary
+View the live project [here](https://electronics-dictionary.herokuapp.com/).
 
-Welcome jacksheehy15,
+# Table of Contents
+* [Electronics Dictionary Summary](#electronics-dictionary-summary)
+* [User Experience](#user-experience)
+   * [User Stories](#user-stories)
+   * [Design](#design)
+       * [1. Colour Scheme](#colour-scheme)
+       * [2. Font](#font)
+       * [3. Logo](#logo)
+       * [4. Composition](#composition)
+       * [5. Wireframes](#wireframes)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+   * [Existing Features](#existing-features)
+   * [Future Features](#future-features)
+* [Testing](#testing)
+* [Deployment](#deployment)
+    * [Host on Github Pages](#host-on-github-pages)
+    * [Running Project Locally](#run-your-project-locally)
+* [Credits](#credits)
+    * [Content](#content)
+    * [Code](#code)
+    * [Media](#media)
+* [Acknowledgements](#acknowledgements)
+***
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+# Electronics Dictionary Summary
 
-## Gitpod Reminders
+This is my second milestone project where I have designed, designed and developed a web app with the use of Frontend and Backend technologies. 
+My goals with this web app is to teach people all about the terminology behind electronics.
+I have taken my knowledge learned from the Full Stack Software Developer course, 
+(HTML, CSS, JavaScript, Python, Bootstrap, MongoDB) to provide a clear,
+ functioning and responsive web application that 
+demonstrates a proficient use of HTML5, Python and MongoDB, with slight uses of CSS3 and JavaScript. 
+The Bootstrap Framework was used along side
+these programming languages to help give
+the site a clear strucutre and ensure the site has a high standard of responsiveness on desktop, tablet and
+mobile devices.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+*Electronics Dictionary* is a project for a web application to help people who might not understand the terminology 
+behind electronics.
+Be it , computers , phones, screens etc. The app acts as a dictionary to help teach others about electronics and 
+technology as a whole, which is where the majority of my passion is.
 
-`python3 -m http.server`
+The full site is deployed to Heroku, and you can visit it [here](https://electronics-dictionary.herokuapp.com/).
 
-A blue button should appear to click: _Make Public_,
 
-Another blue button should appear to click: _Open Browser_.
+## **User Experience**
+![Electronics Dictionary - Am I Responsive](images/response.PNG)
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## User Stories
 
-A blue button should appear to click: _Make Public_,
+* User Goals:
+    * As a user, I want to be able to navigate through the entire site, comfortably and securely.
+    * As a user, I want to have the ability to create an account.
+    * As a user, I want to be able to create my own dictionary item and add it to the web app.
+    * As a user, I want to be able to edit or delete my added dictionary item.
+    * As a user, I want to have a page dedicated to my account.
+    * As a user, I want to be able to navigate to the developers LinkedIn and GitHub accounts.
 
-Another blue button should appear to click: _Open Browser_.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+* For the user, the site assists in meeting the user goals by:
+    * Presenting a clean website that's easy-on-the-eye, providing smooth navigation with the use of a fixed navbar.
+    This enables them to click between the pages at all times. The user can also click on the logo from
+    any page to take them back to the home page.
+    * Providing a clean, basic form that doesn't overwhelm or confuse the user which they can fill out to submit their own dictionary item to the web app.
+    * The user can add their own account which enable them to create their own dictionary items and also allows them to edit and delete said items.
+    * The user can easily log in/out of their profile and navigate to the developers social links.
 
-## Updates Since The Instructional Video
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
----
-
-Happy coding!
+[Back to Top](#table-of-contents)
+  
