@@ -28,11 +28,12 @@ View the live project [here](https://electronics-dictionary.herokuapp.com/).
 
 # Electronics Dictionary Summary
 
-This is my second milestone project where I have designed, designed and developed a web app with the use of Frontend and Backend technologies. 
+This is my third milestone project out of 4 in the Code Institute Full Stack Developer course
+where I have designed and developed a web app with the use of Frontend and Backend technologies. 
 My goals with this web app is to teach people all about the terminology behind electronics.
 I have taken my knowledge learned from the Full Stack Software Developer course, 
 (HTML, CSS, JavaScript, Python, Bootstrap, MongoDB) to provide a clear,
- functioning and responsive web application that 
+functioning and responsive web application that 
 demonstrates a proficient use of HTML5, Python and MongoDB, with slight uses of CSS3 and JavaScript. 
 The Bootstrap Framework was used along side
 these programming languages to help give
