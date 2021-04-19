@@ -25,7 +25,7 @@ View the live project [here](https://electronics-dictionary.herokuapp.com/).
     * [Media](#media)
 * [Acknowledgements](#acknowledgements)
 ***
-
+ 
 # Electronics Dictionary Summary
 
 This is my third milestone project out of 4 in the Code Institute Full Stack Developer course
