@@ -8,7 +8,6 @@ if os.path.exists("env.py"):
     import env
 
 
-# Task = items
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -21,8 +20,8 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_items")
 def get_items():
-    items = mongo.db.item.find()
-    return render_template("item.html", items=items)
+    items = mongo.db.items.find()
+    return render_template("items.html", items=items)
 
 
 if __name__ == "__main__":
