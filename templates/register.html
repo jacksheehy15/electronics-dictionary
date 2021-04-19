@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="center-align">Create an Account</h3>
+
+<div class="row">
+    <form class="col s12 m8 offset-m2">
+        <div class="card-panel">
+            <span>
+                <!--Username input-->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-user-plus prefix light-teal-text"></i>
+                        <input id="username" name="username" type="text" class="validate">
+                        <label for="username">Username</label>
+                    </div>
+                </div>
+                <!--Password input-->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-lock prefix light-teal-text"></i>
+                        <input id="password" name="password" type="password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <!--Register Button-->
+                <div class="row">
+                    <button type="submit" class="col s12 btn-large light-teal 
+                    lighten-4 text-shadow">Create
+                        Account</button>
+                </div>
+            </span>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
