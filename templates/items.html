@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electronics Dictionary</title>
-</head>
+<h2>I am extending </h2>
 
-<body>
     {% for item in items %}
-    {{ item.item_name }}<br>
-    {{ item.category_name }}<br>
-    {{ item.item_description }}<br>
+        {{ item.item_name }}<br>
+        {{ item.category_name }}<br>
+        {{ item.item_description }}<br>
     {% endfor %}
-</body>
 
-</html>
+{% endblock %}
