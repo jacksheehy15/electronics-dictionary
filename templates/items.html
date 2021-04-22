@@ -1,27 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-
-    {% for item in items %}
-        {{ item.item_name }}<br>
-        {{ item.category_name }}<br>
-        {{ item.item_description }}<br>
-    {% endfor %}
+<h3 class="center-align">Dictionary</h3><hr><br>
 <!--Collapsible Accordian -->
  <ul class="collapsible">
+     {% for item in items %}
      <li>
-         <div class="collapsible-header teal lighten-5 text-shadow"><i class="fas fa-caret-down"></i><strong>First</strong></div>
-         <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+         <div class="collapsible-header teal lighten-5 text-shadow">
+             <i class="fas fa-caret-down"></i>
+             <strong>{{ item.item_name }} :</strong></div>
+         <div class="collapsible-body"><strong>{{ item.category_name }}</strong>
+        <p>{{ item.item_description }}</p>
+         </div>
      </li>
-     <li>
-         <div class="collapsible-header teal lighten-5 text-shadow"><i class="fas fa-caret-down"></i><strong>second</strong></div>
-         <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-     </li>
-     <li>
-         <div class="collapsible-header teal lighten-5 text-shadow"><i class="fas fa-caret-down"></i><strong>third</strong></div>
-         <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-     </li>
+     {% endfor %}
  </ul>
-
 {% endblock %}
