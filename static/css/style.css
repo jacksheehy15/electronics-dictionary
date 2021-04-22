@@ -1,7 +1,20 @@
+/* Shadow Text on Navbar*/
 .text-shadow {
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.24);
 }
 
+/* Flash Messages Line Height */
 .flashes h4 {
     line-height: 2;
 }
+
+/* Fix footer to page */
+ body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }

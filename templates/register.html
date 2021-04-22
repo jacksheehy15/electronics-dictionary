@@ -11,7 +11,8 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-user-plus prefix light-teal-text"></i>
-                        <input id="username" name="username" type="text" class="validate" pattern="^[a-zA-Z0-9]{5,15}$" minlength="5" maxlength="15" required>
+                        <input id="username" name="username" type="text" class="validate" pattern="^[a-zA-Z0-9]{5,15}$"
+                            minlength="5" maxlength="15" required>
                         <label for="username">Username - at least 5 letters long</label>
                     </div>
                 </div>
@@ -19,8 +20,18 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-lock prefix light-teal-text"></i>
-                        <input id="password" name="password" type="password" class="validate" pattern="^[a-zA-Z0-9]{5,15}$" minlength="5" maxlength="15" required>
+                        <input id="password" name="password" type="password" class="validate"
+                            pattern="^[a-zA-Z0-9]{5,15}$" minlength="5" maxlength="15" required>
                         <label for="password">Password - at least 5 letters long</label>
+                    </div>
+                </div>
+                <!--Re-Enter Password input-->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-lock prefix light-teal-text"></i>
+                        <input id="reenterpassword" name="reenterpassword" type="password" class="validate"
+                            pattern="^[a-zA-Z0-9]{5,15}$" minlength="5" maxlength="15" required>
+                        <label for="password">Re-Enter Password</label>
                     </div>
                 </div>
                 <!--Register Button-->
@@ -31,8 +42,9 @@
                 </div>
             </span>
         </div>
+        <!--Already Registered Button-->
     </form>
-        <div class="row">
+    <div class="row">
         <div class="col s12">
             <p class="center-align">Already Registered?<a href="{{ url_for('login') }}"
                     class="teal-text text-darken-4"><strong> Log in</strong></a> </p>
