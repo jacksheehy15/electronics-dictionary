@@ -59,11 +59,11 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(request.form.get("username")))
-                    return redirect(url_for(
-                        "profile", username=session["user"]))
+                    existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -97,8 +97,19 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_item")
+@app.route("/add_item", methods=["GET", "POST"])
 def add_item():
+    if request.method == "POST":
+        item = {
+            "category_name": request.form.get("category_name"),
+            "item_name": request.form.get("item_name"),
+            "item_description": request.form.get("item_description"),
+            "created_by": session["user"]
+        }
+        mongo.db.items.insert_one(item)
+        flash("Item Added to Dictionary")
+        return redirect(url_for("get_items"))
+
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_item.html", categories=categories)
 
