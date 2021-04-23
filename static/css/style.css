@@ -18,3 +18,8 @@
   main {
     flex: 1 0 auto;
   }
+
+  .collapsible-header .col-strong {
+      margin: 12px;
+      line-height: 42px;
+  }
