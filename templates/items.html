@@ -1,26 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align">Dictionary</h3><hr><br>
+<h3 class="center-align">Dictionary</h3>
+<hr><br>
 <!--Collapsible Accordian -->
- <ul class="collapsible">
-     {% for item in items %}
-     <li>
-         <div class="collapsible-header teal lighten-5">
-             <div class="col s3">
-                 <i class="fas fa-caret-down"></i>
-                 <a href="" class="btn-small green accent-4">Done</a>
-                 <a href="" class="btn-small teal-darken-2 accent-4">Edit</a>
-             </div>
-             <div class="col s9">
-                   <strong>{{ item.item_name }} </strong></div>
-             </div>
-           
-         <div class="collapsible-body"><strong>{{ item.category_name }}</strong>
-        <p>{{ item.item_description }}</p>
-        <p><em>Created By: {{ item.created_by }}</em></p>
-         </div>
-     </li>
-     {% endfor %}
- </ul>
+<ul class="collapsible">
+    {% for item in items %}
+    <li>
+        <div class="collapsible-header teal lighten-5">
+            <div class="col s3">
+                <i class="fas fa-caret-down"></i>
+                <a href="" class="btn-small green accent-4">Done</a>
+               <a href="{{ url_for('edit_item', item_id=item._id) }}" class="btn-small teal-darken-2 accent-4">Edit</a>
+            </div>
+            <div class="col s9">
+                <strong>{{ item.item_name }} </strong></div>
+        </div>
+
+        <div class="collapsible-body"><strong>{{ item.category_name }}</strong>
+            <p>{{ item.item_description }}</p>
+            <p><em>Created By: {{ item.created_by }}</em></p>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
 {% endblock %}
