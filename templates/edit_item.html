@@ -9,35 +9,39 @@
               <div class="input-field col s12">
                   <i class="fas fa-folder-open prefix teal-text"></i>
                   <select id="category_name" name="category_name" class="validate">
-                      <option value="" disabled selected>Choose Category</option>
+                      <option value="" disabled>Choose Category</option>
                       {% for category in categories %}
+                      {% if category.category_name == item.category_name %}
+                      <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+                      {% else %}
                       <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                      {% endif %}
                       {% endfor %}
                   </select>
               </div>
 
           </div>
-          <!-- Item Name -->
-          <div class="row">
-              <div class="input-field col s12">
-                  <i class="fas fa-pen prefix teal-text"></i>
-                  <input id="item_name" name="item_name" type="text" minlength="1" maxlength="50" class="validate"
-                      required>
-                  <label for="item_name">Item Name</label>
-              </div>
-          </div>
-          <!-- Item Description -->
-
-          <div class="row">
-              <div class="input-field col s12">
-                  <i class="fas fa-align-left prefix teal-text"></i>
-                  <textarea id="item_description" name="item_description" class="materialize-textarea validate"
-                      minlength="5" maxlength="200" required></textarea>
-                  <label for="item_description">Item Description</label>
-              </div>
-          </div>
-
-          <!-- Submit to Dictionary Button-->
+                <!-- Edi Item name -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-pencil-alt prefix teal-text "></i>
+                    <input id="item_name" name="item_name" minlength="1" maxlength="50"
+                        value="{{ item.item_name }}" type="text" class="validate" required>
+                    <label for="item_name">Item Name</label>
+                </div>
+            </div>
+            <!-- Edit Item description -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-align-left prefix teal-text"></i>
+                    <textarea id="item_description" name="item_description" minlength="5"
+                        maxlength="200" class="materialize-textarea validate" required>
+                        {{- item.item_description -}}
+                    </textarea>
+                    <label for="task_description">Task Description</label>
+                </div>
+            </div>
+          <!-- Submit Edit to Dictionary Button-->
           <div class="row">
               <div class="col s12 center-align">
                   <button type="submit" class="btn-large light-blue darken-1 text-shadow">
