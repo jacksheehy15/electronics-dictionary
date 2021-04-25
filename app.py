@@ -116,9 +116,26 @@ def add_item():
 
 @app.route("/edit_item/<item_id>", methods=["GET", "POST"])
 def edit_item(item_id):
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "item_name": request.form.get("item_name"),
+            "item_description": request.form.get("item_description"),
+            "created_by": session["user"]
+        }
+        mongo.db.items.update({"_id": ObjectId(item_id)}, submit)
+        flash("Task Successfully Updated")
+
     item = mongo.db.items.find_one({"_id": ObjectId(item_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_item.html", item=item, categories=categories)
+
+
+@app.route("/delete_item/<item_id>")
+def delete_item(item_id):
+    mongo.db.items.remove({"_id": ObjectId(item_id)})
+    flash("Item Successfully Deleted")
+    return redirect(url_for("get_item"))
 
 
 if __name__ == "__main__":
