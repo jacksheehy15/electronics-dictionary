@@ -138,8 +138,13 @@ def delete_item(item_id):
     return redirect(url_for("get_items"))
 
 
+@app.route("/dictionary")
+def dictionary():
+    dictionary = list(mongo.db.items.find())
+    return render_template("items.html", dictionary=dictionary)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
-            
