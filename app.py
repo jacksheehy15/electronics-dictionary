@@ -165,10 +165,16 @@ def delete_user():
     session.clear()
     return render_template("register.html", username=username)
 
+
 @app.route("/dictionary")
 def dictionary():
     dictionary = list(mongo.db.items.find())
     return render_template("items.html", dictionary=dictionary)
+
+
+@app.route("/add_category", methods=["GET", "POST"])
+def add_category():
+    return render_template("add_category.html")
 
 
 if __name__ == "__main__":
