@@ -12,7 +12,7 @@
                 <i class="fas fa-caret-down"></i>
                 {% if session.user|lower == item.created_by|lower %}
                         <a href="{{ url_for('delete_item', item_id=item._id) }}" class="btn-small green accent-4">Delete</a>
-                        <a href="{{ url_for('edit_item', item_id=item._id) }}" class="btn-small teal-darken-2 accent-4">Edit</a>
+                        <a href="{{ url_for('edit_item', item_id=item._id) }}" class="btn-small amber accent-4">Edit</a>
                 {% endif %}
             </div>
             <div class="col s9">  
