@@ -5,6 +5,8 @@ $(document).ready(function () {
     $('.collapsible').collapsible();
     // Initialize Category Dropdown
     $('select').formSelect();
+    // Initialize Delete Account Modal
+    $('.modal').modal();
 
 // Form Validation from Tim Nelson via TaskManager Module
     validateMaterializeSelect();

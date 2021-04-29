@@ -145,8 +145,19 @@ def delete():
         return redirect(url_for("login"))
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    return render_template("delete.html", username=username)
+    return render_template("delete_account.html", username=username)
 
+
+@app.route("/delete_user")
+def delete_user():
+    """ Delete user from MongoDB """
+    if 'user' not in session:
+        return redirect(url_for("login"))
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    mongo.db.users.delete_one({"username": username})
+    session.clear()
+    return render_template("register.html", username=username)
 
 @app.route("/dictionary")
 def dictionary():
