@@ -138,6 +138,16 @@ def delete_item(item_id):
     return redirect(url_for("get_items"))
 
 
+@app.route("/delete")
+def delete():
+    """ Load Delete Account Page """
+    if 'user' not in session:
+        return redirect(url_for("login"))
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    return render_template("delete.html", username=username)
+
+
 @app.route("/dictionary")
 def dictionary():
     dictionary = list(mongo.db.items.find())
