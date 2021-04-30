@@ -1,7 +1,7 @@
   {% extends "base.html" %}
   {% block content %}
   <!--Choose Category Section-->
-  <h3 class="center-align">Edit Item</h3>
+  <h3 class="center-align">Edit an Item</h3>
   <hr><br>
   <div class="row card-panel">
       <form class="col s12" method="POST" action="{{ url_for('edit_item', item_id=item._id) }}">
