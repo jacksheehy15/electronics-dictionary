@@ -8,7 +8,7 @@
         <!-- Image acts as modal trigger -->
         <section class="row">
             <div class="col s12 m6 offset-m3">
-                <div class="card delete-card teal">
+                <div class="card delete-card teal lighten-2">
                     <div id="delete-account-btn" class="card-image">
                         <a class="modal-trigger" href="#modal"><h3 class="center-align black-text">DELETE</h3></a>
                     </div>
@@ -18,7 +18,7 @@
 
         <section class="col s12">
             <!-- Modal Structure -->
-            <div id="modal" class="modal teal lighten-2">
+            <div id="modal" class="modal lighten-2">
                 <div class="modal-content black-text center-align">
                     <h2 class="delete-msg">Are you sure you want to delete your account ?</h2>
                     <a href="{{ url_for('delete_user', username=username) }}" 

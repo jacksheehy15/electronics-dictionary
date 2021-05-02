@@ -21,29 +21,25 @@
     </form>
 </div>
 <!--Collapsible Accordian -->
-<ul class="card">
+<div class="row">
     {% for item in items %}
-    <li>
-        <div class=" teal lighten-5">
-            <div class="col s3">
-                {% if session.user|lower == item.created_by|lower %}
-                <a href="#modal{{ loop.index }}" class="modal-trigger btn-small green accent-4">Delete</a>
-                <a href="{{ url_for('edit_item', item_id=item._id) }}" class="btn-small amber accent-4">Edit</a>
-                {% endif %}
-                {% endfor %}
+    <div class="col s12 m4">
+        
+
+        
+        <div class="card small teal lighten-2 center-align">
+            <div class="card-content white-text">
+                <span class="card-title"><strong>{{ item.item_name }}</strong></span>
+                <p>Category: {{ item.category_name }}</p><br>
+                <p>{{ item.item_description }}</p>
+                <p><strong> Added By: {{ item.created_by }}</strong></p>
             </div>
-            <div class=" row">
-                {% for item in items %}
-                <div class="item-dict col s3">
-                    <p>{{ item.item_name }}</p>
-                    <p>{{ item.item_description }}</p>
-                    <p>Created By: {{ item.created_by }}</p>
-                </div>
-                {% endfor %}
-            </div>
+            {% if session.user|lower == item.created_by|lower %}
+            <a href="#modal{{ loop.index }}" class="modal-trigger btn-small green accent-4">Delete</a>
+            <a href="{{ url_for('edit_item', item_id=item._id) }}" class="btn-small amber accent-4">Edit</a>
+            {% endif %}
         </div>
-
-    </li>
-
-</ul>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
