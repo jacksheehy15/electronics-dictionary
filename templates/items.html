@@ -32,7 +32,7 @@
                 <span class="card-title"><strong>{{ item.item_name }}</strong></span>
                 <p>Category: {{ item.category_name }}</p><br>
                 <p>{{ item.item_description }}</p>
-                <p><strong> Added By: {{ item.created_by }}</strong></p>
+                <p class="text-shadow"><strong> Added By: {{ item.created_by }}</strong></p>
             </div>
             {% if session.user|lower == item.created_by|lower %}
             <a href="#modal{{ loop.index }}" class="modal-trigger btn-small green accent-4">Delete</a>
