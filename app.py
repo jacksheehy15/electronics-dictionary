@@ -141,6 +141,8 @@ def edit_item(item_id):
 
 @app.route("/delete_item/<item_id>")
 def delete_item(item_id):
+    if 'user' not in session:
+        return redirect(url_for("login"))
     mongo.db.items.remove({"_id": ObjectId(item_id)})
     flash("Item Successfully Deleted!")
     return redirect(url_for("get_items"))

@@ -1,22 +1,61 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="row">
-        <div class="col s12 m6 offset-m3">
-            <div class="card-panel">
-                <h3 class="center-align light-blue-text text-darken-4">
-                    Hi, {{ username }}. This is your profile!
-                </h3><hr><br>
+<div class="row">
+    <div class="col s12 m6 offset-m3">
+        <div class="card-panel">
+            <h3 class="center-align light-blue-text text-darken-4">
+                Hi, {{ username }}. This is your profile!
+            </h3>
+            <hr><br>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 center-align">
+        <a href="{{ url_for('delete') }}" class="teal btn-large delete-account-button">
+            Delete Account
+        </a>
+    </div>
+</div>
+<h3 class="center-align">Here are all the items added by you:</h3>
+{% if terms|length > 0 %}
+<ul class="collapsible popout">
+            {% for item in items %}
+                {% if session["user"] == item.created_by %}
+                    <li>
+                        <div class="collapsible-header white-text grey darken-2">
+                            {% if session["user"] == item.created_by or session["user"] == "admin" %}
+                                <div class="col s3">
+                                    <a href="{{ url_for('edit_item', item_id=item._id) }}" 
+                                    class="amber darken-3 btn">Edit</a>
+                                    <!-- Modal Trigger -->
+                                    <a class=" btn modal-trigger red darken-1" 
+                                    href="#modal{{ loop.index }}">Delete</a>
+                                    <!-- Modal Structure -->
+                                    <div id="modal{{ loop.index }}" class="modal modal-fixed-footer">
+                                        <div class="modal-content black-text center-align">
+                                            <h2 class="delete-msg">Do you really want to delete this item?</h2>
+                                            <a href="{{ url_for('delete_item', item_id=item._id) }}" 
+                                            class="modal-close red darken-4 btn-large confirm-btn">Yes</a>
+                                            <a href="#!" class="modal-close amber darken-4 btn-large confirm-btn">No</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+            <div class="col s9">
+                <strong>{{ item.item_name }}</strong>
+                <i class="fas fa-caret-down" aria-hidden="true"></i>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col s12 center-align">
-            <a href="{{ url_for('delete') }}"
-            class="teal btn-large delete-account-button">
-            Delete Account
-            </a>
+        <div class="collapsible-body">
+            <p class="definition">{{ item.definition }}</p><br>
+            <strong>Topic: {{ item.item_name }}</strong>
+            <p><em>Added By: {{ item.created_by }}</em></p>
         </div>
-    </div>
-
+    </li>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</ul>
 {% endblock %}

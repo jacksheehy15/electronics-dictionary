@@ -28,3 +28,8 @@
   .card {
       height: 200px;
   }
+
+  .card-image {
+      height: 25rem;
+      width: 25rem;
+  }
