@@ -32,7 +32,6 @@ def search():
     return render_template("items.html", items=items)
 
 
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -141,8 +140,6 @@ def edit_item(item_id):
 
 @app.route("/delete_item/<item_id>")
 def delete_item(item_id):
-    if 'user' not in session:
-        return redirect(url_for("login"))
     mongo.db.items.remove({"_id": ObjectId(item_id)})
     flash("Item Successfully Deleted!")
     return redirect(url_for("get_items"))
@@ -208,13 +205,11 @@ def edit_category(category_id):
     return render_template("edit_category.html", category=category)
 
 
-
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
     flash("You have deleted a category successfully!")
     return redirect(url_for("get_categories"))
-
 
 
 if __name__ == "__main__":

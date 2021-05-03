@@ -1,32 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
 
-    {% if username == session["user"] %}
-        <header>
-            <h3 class="center-align">To delete your account press the delete button.</h3>
-        </header>
-        <!-- Image acts as modal trigger -->
-        <section class="row">
-            <div class="col s12 m6 offset-m3">
-                <div class="card delete-card teal lighten-2">
-                    <div id="delete-account-btn" class="card-image">
-                        <a class="modal-trigger" href="#modal"><h3 class="center-align black-text">DELETE</h3></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="col s12">
-            <!-- Modal Structure -->
-            <div id="modal" class="modal lighten-2">
-                <div class="modal-content black-text center-align">
-                    <h2 class="delete-msg">Are you sure you want to delete your account ?</h2>
-                    <a href="{{ url_for('delete_user', username=username) }}" 
-                    class="modal-close btn-large confirm-btn">Yes</a>
-                    <a href="#!" class="modal-close amber btn-large confirm-btn">No</a>
-                </div>
-            </div>
-        </section>
-    {% endif %}
+{% if username == session["user"] %}
+<header>
+    <h3 class="center-align">To delete your account press the delete button.</h3>
+</header>
+<!-- Image acts as modal trigger -->
+<div class="col s12 m6 offset-m3 center-align">
+    <div id="delete-account-btn ">
+        <a class="modal-trigger btn-large " href="#modal">DELETE</a>
+    </div>
+</div>
+<section class="col s12">
+    <!-- Modal Structure -->
+    <div id="modal" class="modal lighten-2">
+        <div class="modal-content black-text center-align">
+            <h2 class="delete-msg">Are you sure you want to delete your account ?</h2>
+            <a href="{{ url_for('delete_user', username=username) }}" class="modal-close btn-large confirm-btn">Yes</a>
+            <a href="#!" class="modal-close amber btn-large confirm-btn">No</a>
+        </div>
+    </div>
+</section>
+{% endif %}
 
 {% endblock %}
