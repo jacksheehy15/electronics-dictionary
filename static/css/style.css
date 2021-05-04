@@ -1,35 +1,42 @@
 /* Shadow Text on Navbar*/
+
 .text-shadow {
-    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.24);
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.24);
 }
+
 
 /* Flash Messages Line Height */
+
 .flashes h4 {
-    line-height: 2;
+  line-height: 2;
 }
 
+
 /* Fix footer to page */
- body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
 
-  main {
-    flex: 1 0 auto;
-  }
-  
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+
 /* Header Work  */
-  .collapsible-header .col-strong {
-      margin: 12px;
-      line-height: 42px;
-  }
 
-  .card {
-      height: 200px;
-  }
+.collapsible-header .col-strong {
+  margin: 12px;
+  line-height: 42px;
+}
 
-  .card-image {
-      height: 25rem;
-      width: 25rem;
-  }
+.card {
+  height: 200px;
+}
+
+.card-image {
+  height: 25rem;
+  width: 25rem;
+}

@@ -82,4 +82,22 @@ The full site is deployed to Heroku, and you can visit it [here](https://electro
 
 
 [Back to Top](#table-of-contents)
+
+## Design
+
+* Color Scheme
+    * The main colors for the web app are Materialize White, And Materialize Teal ( #ffffff white, #009688 teal)
+
+* Typography
+    * The Arial font is the main font used throughout the whole web app, I used Arial because it is a stock HTML font and fits the design perfectly.
+
+* Imagery 
+    * Imagery is not used much throughout the site, I used an image for the favicon which I aquired [here](https://www.freelogodesign.org/).
+
+
+* Wireframes
+    * [Home Page Wireframes ](https://www.figma.com/file/yI9OeRko7aIyWm06MkR1bI/Electronics-Dictionary-Home?node-id=0%3A1)
+    * [Log In/Register Wireframes](https://www.figma.com/file/hptXIza06wqdejhCGHEo5p/Login%2F-Register?node-id=0%3A1)
+    * [Profile Wireframes ](https://www.figma.com/file/LSUof5EGikoTF5KROBFwnG/Profile?node-id=0%3A1)
+
   
