@@ -135,7 +135,7 @@ def edit_item(item_id):
 
     item = mongo.db.items.find_one({"_id": ObjectId(item_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_item.html", item=item, categories=categories)
+    return render_template("items.html", item=item, categories=categories)
 
 
 @app.route("/delete_item/<item_id>")

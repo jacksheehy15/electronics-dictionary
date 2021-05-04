@@ -53,13 +53,23 @@ The full site is deployed to Heroku, and you can visit it [here](https://electro
 
 ## User Stories
 
-* User Goals:
-    * As a user, I want to be able to navigate through the entire site, comfortably and securely.
-    * As a user, I want to have the ability to create an account.
-    * As a user, I want to be able to create my own dictionary item and add it to the web app.
-    * As a user, I want to be able to edit or delete my added dictionary item.
-    * As a user, I want to have a page dedicated to my account.
-    * As a user, I want to be able to navigate to the developers LinkedIn and GitHub accounts.
+* First Time Visitor Goals :
+    * As a first time visitor, I want to easily understand the purpose for this sight.
+    * As a first time visitor, I want to easily navigate through the site to find content.
+    * As a first time visitor, I want to have the ability to find their social medie links, wether it be Github or LinkedIn
+
+* Returning Visitor Goals
+    * As a returning visitor, I want to find new items and terms within the dictionary.
+    * As a returning visitor, I want to find the easiest way to create an account within the app.
+    * As a returning visitor, I want to find social media links related to the developer.
+    * As a frequent visitor, I want to have the ability to Create, Read, Update and Delete my items.
+    * As a frequent visitor, I want to have the ability to delete my account.
+
+* Frequent Visitor Goals
+    * As a frequent visitor, I want to see if there are any newly added items or terms.
+    * As a frequent visitor, I want to have easy access to Log In and Log Out functionalty.
+    * As a frequent visitor, I want to have the ability to Create, Read, Update and Delete my items.
+    * As a frequent visitor, I want to have the ability to delete my account.
 
 
 * For the user, the site assists in meeting the user goals by:
