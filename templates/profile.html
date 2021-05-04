@@ -48,11 +48,12 @@
                 <i class="fas fa-caret-down" aria-hidden="true"></i>
             </div>
         </div>
-        <div class="collapsible-body">
-            <p class="definition">{{ item.definition }}</p><br>
-            <strong>Topic: {{ item.item_name }}</strong>
-            <p><em>Added By: {{ item.created_by }}</em></p>
-        </div>
+        <div class="card-content white-text">
+                <span class="card-title"><strong>{{ item.item_name }}</strong></span>
+                <p>Category: {{ item.category_name }}</p><br>
+                <p>{{ item.item_description }}</p>
+                <p class="text-shadow"><strong> Added By: {{ item.created_by }}</strong></p>
+            </div>
     </li>
         {% endif %}
     {% endfor %}
