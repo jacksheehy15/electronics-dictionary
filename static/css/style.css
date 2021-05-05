@@ -4,6 +4,14 @@
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.24);
 }
 
+/* Block Nav Text on small devices */
+@media (max-width: 640px) 
+{
+    #head-nav
+    {
+        display: none;
+    }
+}
 
 /* Flash Messages Line Height */
 

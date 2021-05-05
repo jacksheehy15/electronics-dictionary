@@ -89,9 +89,10 @@ def profile(username):
     # grab the session user's username from database
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    items = list(mongo.db.items.find())
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username, items=items)
 
     return redirect(url_for("login"))
 
@@ -131,7 +132,8 @@ def edit_item(item_id):
             "created_by": session["user"]
         }
         mongo.db.items.update({"_id": ObjectId(item_id)}, submit)
-        flash("Task Successfully Updated")
+        flash("Item Successfully Updated")
+        return redirect(url_for("get_items"))
 
     item = mongo.db.items.find_one({"_id": ObjectId(item_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)

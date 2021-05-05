@@ -100,4 +100,17 @@ The full site is deployed to Heroku, and you can visit it [here](https://electro
     * [Log In/Register Wireframes](https://www.figma.com/file/hptXIza06wqdejhCGHEo5p/Login%2F-Register?node-id=0%3A1)
     * [Profile Wireframes ](https://www.figma.com/file/LSUof5EGikoTF5KROBFwnG/Profile?node-id=0%3A1)
 
+
+
+## Features
+
+* Responsive on all devices
+* Ability to create an account
+* CRUD functionalty to Create, Read, Update and Delete items.
+* Ability to edit and delete items.
+* Ability to delete the users account.
+
+### Frameworks, Libraries & Programs Used
+1. 
+
   
