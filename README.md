@@ -110,7 +110,112 @@ The full site is deployed to Heroku, and you can visit it [here](https://electro
 * Ability to edit and delete items.
 * Ability to delete the users account.
 
-### Frameworks, Libraries & Programs Used
-1. 
+## Technologies Used
+### Languages Used
+- [HTML5](https://html.com/)
+- [CSS3](https://en.wikipedia.org/wiki/CSS)
+- [JavaScript](https://www.javascript.com/)
+- [Python](https://www.python.org/)
 
-  
+### Frameworks, Libraries & Programs Used
+1. [Materialize ](https://materializecss.com/)
+    * Materialize was used to style the web app to my needs.
+2. [Font Awesome ](https://fontawesome.com/)
+    * Font Awesome was used to get the icons I used throughout the web app.
+3. [JQuery ](https://jquery.com/)
+    * JQuery was used to initialize alot of the features and for form validation.
+4. [Github ](https://github.com/)
+    * GitHub was used to store my project code and connected to heroku for deployment.
+5. [Figma ](https://www.figma.com/file/LSUof5EGikoTF5KROBFwnG/Profile?node-id=0%3A1)
+    * Figma was used to create the wireframes.
+6. [Heroku ](https://www.heroku.com/)
+    * Heroku was used to deploy my project. 
+7. [Flask ](https://flask.palletsprojects.com/en/1.1.x/)
+    * Flask was used as the Framework in regard to the functions.
+8. [Jinja ](https://jinja.palletsprojects.com/en/2.11.x/)
+    * Jinga was used as the templating language for Python.
+9. [Mongo Db Atlas ](https://www.mongodb.com/)
+    * Mongo DB Atlas was used as the database to store the items, usernames and categories.
+10. [Werkzeug ](https://werkzeug.palletsprojects.com/en/1.0.x/)
+    * Werkzeug was used to hash user passwords
+11. [Favicon.io ](https://favicon.io/)
+    * favicon.io was used to add a favicon to the site.
+
+
+## Testing
+ - I manually tested the site for errors by availing of the Google Chrome Developer Tools.
+ - To ensure the sight has valid HTML5 code I validated it [here.](https://validator.w3.org/)
+ - To ensure the sight has valid CSS3 code I validated it [here.](https://validator.w3.org/)
+ - To ensure the sight has valid JQuery code I validated it [here.](https://validator.w3.org/)
+ - To ensure the sight has valid Python code I validated it [here.](http://pep8online.com/checkresult)
+ - To make sure that Python, Flask, Jinja code remained error-free, the Debug console was set to 'True' throughout 
+   the entirety of the development process. Pylint was also used to identify potential problems. I then set the Debug=False as I deplyed my project.
+ - To ensure the site's functionality across various devices, I used the web developer tools on Google Chrome, Firefox and Samsung Internet.
+ - I checked the responsiveness for my site on the following devices:
+* Samsung Galaxy S21 Ultra - 6.8" 1440 x 3200 pixel density
+* Samsung Galaxy Tab S7 - 11" 1600 x 2560 pixel density
+* MacBook Pro - 15" 3200 x 2560 pixel density
+- All of the above devices were flawless with the site.
+
+## Bugs And Fixes
+
+The "Electronics Dictionary" navbar text would overlap on smaller devices, so to fix that I added a media 
+query within my CSS file where it would block the text on devices smaller than 640px, 
+but it would display when you pull across on the menu.
+
+## Deployment
+### I deployed Electronics Dictionary to Heroku. As I done it, I took the following steps:
+1. Set up a requirements.text file on GitPod by typing pip3 freeze –local > requirements.txt into the command line.
+2. Added the Procfile by typing echo web: python app.py > Procfile into the command line.
+3. Logged into Heroku.com and, from the dashboard, clicked on create app.
+4. Entered the unique app name of electronics-dictionary.
+5. Selected the region of Europe.
+6. Clicked the create app button.
+
+### To connect the app I took the following steps:
+1. Clicked connect to GitHub to set up automatic deployment from the GitHub repository.
+2. Added my GitHUb username and repository name of jacksheehy15 and electronics_dicionary.
+3. Clicked search to find the repository.
+4. Clicked connect to connect the app to the repository.
+5. Clicked the settings tab for the app.
+6. Clicked the reveal config vars button.
+7. Added the following variables:
+    - IP, with the value of 0.0.0.0.
+    - PORT, with the value of 5000.
+    - SECRET_KEY, with the value from the env.py file.
+    - MONGO URI, with the value left blank at this stage.
+    - MONGO_DBNAME, with the value of electronics-dictionary.
+8. On Heroku, clicked "Enable automatic deployment" then Deploy branch.
+
+### Pushed the new files to my repository on GitHub, to do so I done:
+1. Typed git add requirements.txt" then git commit -m "Add requirements.txt." into the command line.
+2. Typed git add Procfile then git commit –m "Add Procfile" into the command line.
+3. Typed git push.
+
+
+### To run the code locally, one may take the following steps:
+1. Open my [repository](https://github.com/jacksheehy15/electronics-dictionary)
+2. Click the green "Code" button.
+3. Click the clipboard icon to copy the project URL.
+4. Open a terminal in GitPod, or other IDE.
+5. Open the file you wish to clone to.
+6. Enter the following command into the terminal:
+$ git clone https://github.com/jacksheehy15/electronics-dictionary
+
+## Credits + Acknowledgements
+
+### Site Information Credit:
+Screen items - https://wiki.analog.com/university/courses/electronics/text/glossary .
+Computers items - https://www.vanderbilt.edu/AnS/physics/brau/KC/Computer%20terminology.html .
+Electronic Component items - https://wiki.analog.com/university/courses/electronics/text/glossary .
+Gaming items - https://www.makeuseof.com/tag/learn-the-lingo-common-gaming-terms-you-should-know/ .
+Audio and Video items - https://www.cs.columbia.edu/~hgs/rtp/glossary.html .
+
+
+- A massive thanks to my Mentor, Antonio Rodriguez who gave me plenty of feedback and pointed me in the right direction all the time.
+- A thank you to the Code Institute Student Care team, the CI Tutor team and of course, the CI Slack channel that were there to answer some very stupid questions!
+- Also a thanks to my ex-mentor Seun Owinokoko for helping me get this far.
+
+
+
+ 

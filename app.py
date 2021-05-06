@@ -1,220 +1,267 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+# Imports
+
 import os
-from flask import (
-    Flask, flash, render_template,
-    redirect, request, session, url_for)
+from flask import Flask, flash, render_template, redirect, request, \
+    session, url_for
+
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from werkzeug.security import generate_password_hash, check_password_hash
-if os.path.exists("env.py"):
+from werkzeug.security import generate_password_hash, \
+    check_password_hash
+if os.path.exists('env.py'):
     import env
-
 
 app = Flask(__name__)
 
-app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
-app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-app.secret_key = os.environ.get("SECRET_KEY")
+app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
+app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
+app.secret_key = os.environ.get('SECRET_KEY')
 
 mongo = PyMongo(app)
 
 
-@app.route("/")
-@app.route("/get_items")
+# Home Page Section w/ sorted items from A-Z
+
+@app.route('/')
+@app.route('/get_items')
 def get_items():
-    items = list(mongo.db.items.find())
-    return render_template("items.html", items=items)
+    items = list(mongo.db.items.find().sort('item_name', 1))
+    return render_template('items.html', items=items)
 
 
-@app.route("/search", methods=["GET", "POST"])
+@app.route('/search', methods=['GET', 'POST'])
 def search():
-    query = request.form.get("query")
-    items = list(mongo.db.items.find({"$text": {"$search": query}}))
-    return render_template("items.html", items=items)
+    query = request.form.get('query')
+    items = list(mongo.db.items.find({'$text': {'$search': query}}))
+    return render_template('items.html', items=items)
 
 
-@app.route("/register", methods=["GET", "POST"])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
-    if request.method == "POST":
+    if request.method == 'POST':
+
         # check if username already exists in db
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+
+        existing_user = \
+            mongo.db.users.find_one({'username': request.form.get('username'
+                                    ).lower()})
 
         if existing_user:
-            flash("Username Already Taken, Try Again!")
-            return redirect(url_for("register"))
+            flash('Username Already Taken, Try Again!')
+            return redirect(url_for('register'))
 
-        register = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
-        }
+        register = {'username': request.form.get('username').lower(),
+                    'password': generate_password_hash(request.form.get('password'
+                    ))}
         mongo.db.users.insert_one(register)
 
         # put the new user into 'session' cookie
-        session["user"] = request.form.get("username").lower()
-        flash("Registration Successful!")
-        return redirect(url_for("profile", username=session["user"]))
-    return render_template("register.html")
+
+        session['user'] = request.form.get('username').lower()
+        flash('Registration Successful!')
+        return redirect(url_for('profile', username=session['user']))
+    return render_template('register.html')
 
 
-@app.route("/login", methods=["GET", "POST"])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == "POST":
-        # check if username exists in db
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+    if request.method == 'POST':
+
+        # check if username exists in MongoDB
+
+        existing_user = \
+            mongo.db.users.find_one({'username': request.form.get('username'
+                                    ).lower()})
 
         if existing_user:
-            # ensure hashed password matches user input
-            if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
-                session["user"] = request.form.get("username").lower()
-                flash("Welcome, {}".format(request.form.get("username")))
-                return redirect(url_for(
-                    "profile", username=session["user"]))
+
+            # verify that hashed password matches user input
+
+            if check_password_hash(existing_user['password'],
+                                   request.form.get('password')):
+                session['user'] = request.form.get('username').lower()
+                flash('Welcome, {}'.format(request.form.get('username'
+                      )))
+                return redirect(url_for('profile',
+                                username=session['user']))
             else:
+
                 # invalid password match
-                flash("Incorrect Username and/or Password")
-                return redirect(url_for("login"))
 
+                flash('Incorrect Username and/or Password')
+                return redirect(url_for('login'))
         else:
+
             # username doesn't exist
-            flash("Incorrect Username and/or Password")
-            return redirect(url_for("login"))
 
-    return render_template("login.html")
+            flash('Incorrect Username and/or Password')
+            return redirect(url_for('login'))
+
+    return render_template('login.html')
 
 
-@app.route("/profile/<username>", methods=["GET", "POST"])
+@app.route('/profile/<username>', methods=['GET', 'POST'])
 def profile(username):
-    # grab the session user's username from database
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+
+    # grab the session username from database
+
+    username = mongo.db.users.find_one({'username': session['user'
+            ]})['username']
     items = list(mongo.db.items.find())
 
-    if session["user"]:
-        return render_template("profile.html", username=username, items=items)
+    if session['user']:
+        return render_template('profile.html', username=username,
+                               items=items)
 
-    return redirect(url_for("login"))
+    return redirect(url_for('login'))
 
 
-@app.route("/logout")
+@app.route('/logout')
 def logout():
+
     # remove user from session cookie
-    flash("You have been logged out")
-    session.pop("user")
-    return redirect(url_for("login"))
+
+    flash('You have been logged out')
+    session.pop('user')
+    return redirect(url_for('login'))
 
 
-@app.route("/add_item", methods=["GET", "POST"])
+# Display dictionary items
+
+@app.route('/add_item', methods=['GET', 'POST'])
 def add_item():
-    if request.method == "POST":
+    if request.method == 'POST':
+
         item = {
-            "category_name": request.form.get("category_name"),
-            "item_name": request.form.get("item_name"),
-            "item_description": request.form.get("item_description"),
-            "created_by": session["user"]
-        }
+            'category_name': request.form.get('category_name'),
+            'item_name': request.form.get('item_name'),
+            'item_description': request.form.get('item_description'),
+            'created_by': session['user'],
+            }
         mongo.db.items.insert_one(item)
-        flash("Item Added to Dictionary")
-        return redirect(url_for("get_items"))
+        flash('Item Added to Dictionary')
+        return redirect(url_for('get_items'))
 
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("add_item.html", categories=categories)
+    categories = mongo.db.categories.find().sort('category_name', 1)
+    return render_template('add_item.html', categories=categories)
 
 
-@app.route("/edit_item/<item_id>", methods=["GET", "POST"])
+# Edit item section
+
+@app.route('/edit_item/<item_id>', methods=['GET', 'POST'])
 def edit_item(item_id):
-    if request.method == "POST":
+    if request.method == 'POST':
         submit = {
-            "category_name": request.form.get("category_name"),
-            "item_name": request.form.get("item_name"),
-            "item_description": request.form.get("item_description"),
-            "created_by": session["user"]
-        }
-        mongo.db.items.update({"_id": ObjectId(item_id)}, submit)
-        flash("Item Successfully Updated")
-        return redirect(url_for("get_items"))
+            'category_name': request.form.get('category_name'),
+            'item_name': request.form.get('item_name'),
+            'item_description': request.form.get('item_description'),
+            'created_by': session['user'],
+            }
+        mongo.db.items.update({'_id': ObjectId(item_id)}, submit)
+        flash('Item Successfully Updated')
+        return redirect(url_for('get_items'))
 
-    item = mongo.db.items.find_one({"_id": ObjectId(item_id)})
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_item.html", item=item, categories=categories)
+    item = mongo.db.items.find_one({'_id': ObjectId(item_id)})
+    categories = mongo.db.categories.find().sort('category_name', 1)
+    return render_template('edit_item.html', item=item,
+                           categories=categories)
 
 
-@app.route("/delete_item/<item_id>")
+# Delete item section
+
+@app.route('/delete_item/<item_id>')
 def delete_item(item_id):
-    mongo.db.items.remove({"_id": ObjectId(item_id)})
-    flash("Item Successfully Deleted!")
-    return redirect(url_for("get_items"))
+    mongo.db.items.remove({'_id': ObjectId(item_id)})
+    flash('Item Successfully Deleted!')
+    return redirect(url_for('get_items'))
 
 
-@app.route("/get_categories")
+# Category section
+
+@app.route('/get_categories')
 def get_categories():
-    categories = list(mongo.db.categories.find().sort("category_name", 1))
-    return render_template("categories.html", categories=categories)
+    categories = list(mongo.db.categories.find().sort('category_name',
+                      1))
+    return render_template('categories.html', categories=categories)
 
 
-@app.route("/delete")
+# Delete account page section
+
+@app.route('/delete')
 def delete():
     """ Load Delete Account Page """
+
     if 'user' not in session:
-        return redirect(url_for("login"))
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    return render_template("delete_account.html", username=username)
+        return redirect(url_for('login'))
+    username = mongo.db.users.find_one({'username': session['user'
+            ]})['username']
+    return render_template('delete_account.html', username=username)
 
 
-@app.route("/delete_user")
+# Delete the user from MongoDB
+
+@app.route('/delete_user')
 def delete_user():
     """ Delete user from MongoDB """
+
     if 'user' not in session:
-        return redirect(url_for("login"))
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    mongo.db.users.delete_one({"username": username})
+        return redirect(url_for('login'))
+    username = mongo.db.users.find_one({'username': session['user'
+            ]})['username']
+    mongo.db.users.delete_one({'username': username})
     session.clear()
-    return render_template("register.html", username=username)
+    return render_template('register.html', username=username)
 
 
-@app.route("/dictionary")
+# Dictionary Section
+
+@app.route('/dictionary')
 def dictionary():
     dictionary = list(mongo.db.items.find())
-    return render_template("items.html", dictionary=dictionary)
+    return render_template('items.html', dictionary=dictionary)
 
 
-@app.route("/add_category", methods=["GET", "POST"])
+# Add category for admin section
+
+@app.route('/add_category', methods=['GET', 'POST'])
 def add_category():
-    if request.method == "POST":
-        category = {
-            "category_name": request.form.get("category_name")
-        }
+    if request.method == 'POST':
+        category = {'category_name': request.form.get('category_name')}
         mongo.db.categories.insert_one(category)
-        flash("You have added a new category successfully!")
-        return redirect(url_for("get_categories"))
+        flash('You have added a new category successfully!')
+        return redirect(url_for('get_categories'))
 
-    return render_template("add_category.html")
+    return render_template('add_category.html')
 
 
-@app.route("/edit_category/<category_id>", methods=["GET", "POST"])
+# Edit category for admin section
+
+@app.route('/edit_category/<category_id>', methods=['GET', 'POST'])
 def edit_category(category_id):
-    if request.method == "POST":
-        submit = {
-            "category_name": request.form.get("category_name")
-        }
-        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
-        flash("You have updated a category successfully!")
-        return redirect(url_for("get_categories"))
-    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
-    return render_template("edit_category.html", category=category)
+    if request.method == 'POST':
+        submit = {'category_name': request.form.get('category_name')}
+        mongo.db.categories.update({'_id': ObjectId(category_id)},
+                                   submit)
+        flash('You have updated a category successfully!')
+        return redirect(url_for('get_categories'))
+    category = \
+        mongo.db.categories.find_one({'_id': ObjectId(category_id)})
+    return render_template('edit_category.html', category=category)
 
 
-@app.route("/delete_category/<category_id>")
+# Delete category for admin section
+
+@app.route('/delete_category/<category_id>')
 def delete_category(category_id):
-    mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    flash("You have deleted a category successfully!")
-    return redirect(url_for("get_categories"))
+    mongo.db.categories.remove({'_id': ObjectId(category_id)})
+    flash('You have deleted a category successfully!')
+    return redirect(url_for('get_categories'))
+
+# Set debug=False before deployment
 
 
-if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"),
-            port=int(os.environ.get("PORT")),
-            debug=True)
+if __name__ == '__main__':
+    app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT'
+                                                               )), debug=True)
