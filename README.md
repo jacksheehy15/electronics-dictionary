@@ -201,6 +201,11 @@ $ git clone https://github.com/jacksheehy15/electronics-dictionary
 
 ## Credits 
 
+### Code 
+- Card Items taken from [Materialize](https://materializecss.com/)
+- Defensive Programming for the delete items/categories modals line 59-69 in [RossClarkMS3-terms.html](https://github.com/RossClarkScotland/Automotive_Vocab_Trainer/blob/master/templates/terms.html)
+- Flask, Jinga and Python inspiration from Tim Nelson, in app.py and base.html via the [Task Manager Mini Project](https://github.com/Code-Institute-Solutions/TaskManagerAuth)
+
 ### Site Information Credit:
 Screen items - https://wiki.analog.com/university/courses/electronics/text/glossary .
 Computers items - https://www.vanderbilt.edu/AnS/physics/brau/KC/Computer%20terminology.html .
