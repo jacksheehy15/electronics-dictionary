@@ -4,25 +4,13 @@ View the live project [here](https://electronics-dictionary.herokuapp.com/).
 # Table of Contents
 * [Electronics Dictionary Summary](#electronics-dictionary-summary)
 * [User Experience](#user-experience)
-   * [User Stories](#user-stories)
-   * [Design](#design)
-       * [1. Colour Scheme](#colour-scheme)
-       * [2. Font](#font)
-       * [3. Logo](#logo)
-       * [4. Composition](#composition)
-       * [5. Wireframes](#wireframes)
+* [User Stories](#user-stories)
+* [Design](#design)
 * [Technologies Used](#technologies-used)
 * [Features](#features)
-   * [Existing Features](#existing-features)
-   * [Future Features](#future-features)
 * [Testing](#testing)
 * [Deployment](#deployment)
-    * [Host on Github Pages](#host-on-github-pages)
-    * [Running Project Locally](#run-your-project-locally)
 * [Credits](#credits)
-    * [Content](#content)
-    * [Code](#code)
-    * [Media](#media)
 * [Acknowledgements](#acknowledgements)
 ***
  
@@ -49,7 +37,9 @@ The full site is deployed to Heroku, and you can visit it [here](https://electro
 
 
 ## **User Experience**
-![Electronics Dictionary - Am I Responsive](images/response.PNG)
+Electronics Dictionary AmIResponsive
+
+![](static/images/responsive3.png)
 
 ## User Stories
 
@@ -117,6 +107,8 @@ The full site is deployed to Heroku, and you can visit it [here](https://electro
 - [JavaScript](https://www.javascript.com/)
 - [Python](https://www.python.org/)
 
+[Back to Top](#table-of-contents)
+
 ### Frameworks, Libraries & Programs Used
 1. [Materialize ](https://materializecss.com/)
     * Materialize was used to style the web app to my needs.
@@ -140,6 +132,8 @@ The full site is deployed to Heroku, and you can visit it [here](https://electro
     * Werkzeug was used to hash user passwords
 11. [Favicon.io ](https://favicon.io/)
     * favicon.io was used to add a favicon to the site.
+12. [Am I responsive](http://ami.responsivedesign.is/)
+    * Used to get the responsive picture at the top of the MD file.
 
 
 ## Testing
@@ -156,6 +150,8 @@ The full site is deployed to Heroku, and you can visit it [here](https://electro
 * Samsung Galaxy Tab S7 - 11" 1600 x 2560 pixel density
 * MacBook Pro - 15" 3200 x 2560 pixel density
 - All of the above devices were flawless with the site.
+
+[Back to Top](#table-of-contents)
 
 ## Bugs And Fixes
 
@@ -192,6 +188,7 @@ but it would display when you pull across on the menu.
 2. Typed git add Procfile then git commit –m "Add Procfile" into the command line.
 3. Typed git push.
 
+[Back to Top](#table-of-contents)
 
 ### To run the code locally, one may take the following steps:
 1. Open my [repository](https://github.com/jacksheehy15/electronics-dictionary)
@@ -202,7 +199,7 @@ but it would display when you pull across on the menu.
 6. Enter the following command into the terminal:
 $ git clone https://github.com/jacksheehy15/electronics-dictionary
 
-## Credits + Acknowledgements
+## Credits 
 
 ### Site Information Credit:
 Screen items - https://wiki.analog.com/university/courses/electronics/text/glossary .
@@ -211,11 +208,12 @@ Electronic Component items - https://wiki.analog.com/university/courses/electron
 Gaming items - https://www.makeuseof.com/tag/learn-the-lingo-common-gaming-terms-you-should-know/ .
 Audio and Video items - https://www.cs.columbia.edu/~hgs/rtp/glossary.html .
 
-
+## Acknowledgements
 - A massive thanks to my Mentor, Antonio Rodriguez who gave me plenty of feedback and pointed me in the right direction all the time.
 - A thank you to the Code Institute Student Care team, the CI Tutor team and of course, the CI Slack channel that were there to answer some very stupid questions!
 - Also a thanks to my ex-mentor Seun Owinokoko for helping me get this far.
 
+[Back to Top](#table-of-contents)
 
 
  
